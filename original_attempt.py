@@ -1,9 +1,7 @@
 #!/usr/bin/python
 
 
-#   Attempting the MNIST train.csv set
-#   Using Python's scikit svm kernels
-#   Attempting to beat my 95.5% record on Kaggle as renfieldsdrunk
+#   This gets approximately 95% accuracy, equivelent to my R attempt
 #   * * * Completed by Vincent A. Saulys
 #   * * * B.Eng Student at McGill University
 #   Completed with ample help from the internets
@@ -41,29 +39,22 @@ y_valid = validation[:,0]
 x_valid = validation[:,1:]
 print 'did necesary preparations !'
 
-mm_scal = MinMaxScaler()
-pca = PCA(n_components=99)
+# Normalizing data
+x_train = (x_train / (255*2)) - 1      
+x_valid = (x_valid / (255*2)) - 1
+print 'normalized data !'
 
-x_train = mm_scal.fit_transform(x_train)
-x_train = pca.fit_transform(x_train)
-x_valid = mm_scal.fit_transform(x_valid)
-x_valid = pca.fit_transform(x_valid)
+classifier = SVC(kernel="rbf", C=2.8, gamma=.0073)
+print 'instigated classifier model !'
+y_pred = classifier.fit(x_train, y_train).predict(x_valid)
+print 'building based on training data set !'
 
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.1, 0.01, 0.001,0.0001], 'C': [1, 10, 100, 1000, 10000]}, 
-                    {'kernel' : ['poly'], 'degree' : [3, 4, 5, 7, 9, 11, 15], 'C' : [1, 5, 6, 10]}]
-                    
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2).fit(x_train, y_train)
-
-# Give Best Estimators
-best_model.best_estimator_ 
-
-# Fit to some predictors
-y_pred = best_model.predict(x_valid)
-
-# Print our output!
 cm = confusion_matrix(y_valid, y_pred)
 asm = accuracy_score(y_valid,y_pred)
-print(cm) #ConfusionMatrix
-print "Accuracy: %f" % (asm) #accuracy
+csm = classification_report(y_valid,y_pred)
+print(cm)
+print(asm) #Shows ~95% accuracy which is ok
+print(csm)
+
 
 

@@ -1,3 +1,15 @@
+#
+#
+#       This is a total Hodge podge of extra code bits I chose not to ultimately use
+#
+#
+
+
+# This normalizes the data to a range of [-1,1] as opposed to a range of [0,~255]
+x_train = (x_train / (255*2)) - 1      
+x_valid = (x_valid / (255*2)) - 1
+print 'normalized data !'
+
 classifier = SVC(kernel="rbf", C=2.8, gamma=.0073)
 print 'instigated classifier model !'
 y_pred = classifier.fit(x_train, y_train).predict(x_valid)

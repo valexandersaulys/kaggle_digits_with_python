@@ -19,8 +19,6 @@ vcores = cross_validation.cross_val_score(classifier, x_, cv=7)
 print "Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() / 2)
 print "validation set accuracy:  %0.2f (+/- %0.2f)" % ()
 
-
-
 #cm = confusion_matrix(y_valid, y_pred)
 #asm = accuracy_score(y_valid,y_pred)
 #csm = classification_report(y_valid,y_pred)

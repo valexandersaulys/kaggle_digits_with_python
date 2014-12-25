@@ -22,6 +22,10 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import MinMaxScaler
 
+# To reset to use all cores
+import os
+os.system("taskset -p 0xff %d" % os.getpid())
+
 print 'starting...'
 
 df = pd.read_csv('train.csv')
@@ -49,10 +53,11 @@ x_train = pca.fit_transform(x_train)
 x_valid = mm_scal.fit_transform(x_valid)
 x_valid = pca.fit_transform(x_valid)
 
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.1, 0.01, 0.001,0.0001], 'C': [1, 10, 100, 1000, 10000]}, 
-                    {'kernel' : ['poly'], 'degree' : [3, 4, 5, 7, 9, 11, 15], 'C' : [1, 5, 6, 10]}]
+tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.1, 0.01, 0.001, 0.0001], 'C': [1, 10, 100]}, 
+                    {'kernel' : ['poly'], 'degree' : [3, 5, 7, 9], 'C' : [1, 5, 10, 100]}]
                     
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2).fit(x_train, y_train)
+print 'everything all set, preparing the different models'                    
+best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2, n_jobs=8).fit(x_train, y_train)
 
 # Give Best Estimators
 best_model.best_estimator_ 
@@ -66,4 +71,16 @@ asm = accuracy_score(y_valid,y_pred)
 print(cm) #ConfusionMatrix
 print "Accuracy: %f" % (asm) #accuracy
 
+print "Now onto the Test Data!"
+df_submit = pd.read_csv('test.csv')
+df_submit = df_submit.astype(float)
+print "Data Read..."
 
+x_submit = mm_scal.fit_transform(df_submit)
+x_submit = pca.fit_transform(x_submit)
+
+y_submit = best_model.predict(x_submit)
+
+print "All Predicted! Now writing to csv..."
+DataFrame(y_submit).to_csv("submittion_122414.csv", sep='\t', index=True)
+print "Complete!"

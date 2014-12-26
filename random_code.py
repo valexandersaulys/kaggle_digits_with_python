@@ -25,3 +25,13 @@ print "validation set accuracy:  %0.2f (+/- %0.2f)" % ()
 #print(cm)
 #print(asm)
 #print(csm)
+
+
+
+mm_scal = MinMaxScaler()
+pca = PCA(n_components=99)
+
+x_train = mm_scal.fit_transform(x_train)
+x_train = pca.fit_transform(x_train)
+x_valid = mm_scal.fit_transform(x_valid)
+x_valid = pca.fit_transform(x_valid)

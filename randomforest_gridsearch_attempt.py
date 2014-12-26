@@ -1,15 +1,17 @@
-#!/usr/bin/python
-
+#!/usr/bin/pythonprint 
 
 #   Attempting the MNIST train.csv set
-#   Using Python's scikit svm kernels
+#   Using Python's scikit randomForest
 #   Attempting to beat my 95.5% record on Kaggle as renfieldsdrunk
 #   * * * Completed by Vincent A. Saulys
 #   * * * B.Eng Student at McGill University
 #   Completed with ample help from the internets
 
 
-#from pandas import read_csv
+#	Results
+#	* * *	Gets about ~94% on the defaults
+#	* * *	
+
 from sklearn import cross_validation
 from sklearn.svm import SVC
 from sklearn.datasets import fetch_mldata
@@ -41,28 +43,28 @@ y_valid = validation[:,0]
 x_valid = validation[:,1:]
 print 'did necesary preparations !'
 
-mm_scal = MinMaxScaler()
-pca = PCA(n_components=99)
+classifier = RandomForestClassifier(n_jobs=4, 
+									n_estimators=10,
+									criterion='gini'
+									)
+print 'instigated classifier model !'
+y_pred = classifier.fit(x_train, y_train).predict(x_valid)
+print 'building based on training data set !'
 
-x_train = mm_scal.fit_transform(x_train)
-x_train = pca.fit_transform(x_train)
-x_valid = mm_scal.fit_transform(x_valid)
-x_valid = pca.fit_transform(x_valid)
-
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.01, 0.0073, 0.001], 'C': [1, 2, 3] }]
-                    
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2).fit(x_train, y_train)
-
-# Give Best Estimators
-best_model.best_estimator_ 
-
-# Fit to some predictors
-y_pred = best_model.predict(x_valid)
-
-# Print our output!
 cm = confusion_matrix(y_valid, y_pred)
 asm = accuracy_score(y_valid,y_pred)
-print(cm) #ConfusionMatrix
-print "Accuracy: %f" % (asm) #accuracy
+csm = classification_report(y_valid,y_pred)
+print(cm)
+print(asm) 
+print(csm)
 
+print "Now onto the Test Data!"
+df_submit = pd.read_csv('test.csv')
+df_submit = df_submit.astype(float)
+print "Data Read..."
 
+y_submit = classifier.predict(df_submit)
+
+print "All Predicted! Now writing to csv..."
+pd.DataFrame(y_submit).to_csv("submittion_122614_uno.csv", index=True)
+print "Complete!"

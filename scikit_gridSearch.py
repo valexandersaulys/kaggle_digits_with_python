@@ -41,20 +41,14 @@ y_valid = validation[:,0]
 x_valid = validation[:,1:]
 print 'did necesary preparations !'
 
-mm_scal = MinMaxScaler()
-pca = PCA(n_components=99)
-
-x_train = mm_scal.fit_transform(x_train)
-x_train = pca.fit_transform(x_train)
-x_valid = mm_scal.fit_transform(x_valid)
-x_valid = pca.fit_transform(x_valid)
-
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.01, 0.0073, 0.001], 'C': [1, 2, 3] }]
+tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.01, 0.0073, 0.001, 0.0001], 
+				'C': [1, 2, 3] }]	# the 95.5% was achieved with C=2, gamma=0.0073
                     
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2).fit(x_train, y_train)
+best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2, n_jobs=4).fit(x_train, y_train)
 
 # Give Best Estimators
-best_model.best_estimator_ 
+BE = best_model.best_estimator_ 
+print(BE)
 
 # Fit to some predictors
 y_pred = best_model.predict(x_valid)
@@ -65,4 +59,13 @@ asm = accuracy_score(y_valid,y_pred)
 print(cm) #ConfusionMatrix
 print "Accuracy: %f" % (asm) #accuracy
 
+print "Now onto the Test Data!"
+df_submit = pd.read_csv('test.csv')
+df_submit = df_submit.astype(float)
+print "Data Read..."
 
+y_submit = best_model.predict(df_submit)
+
+print "All Predicted! Now writing to csv..."
+pd.DataFrame(y_submit).to_csv("submittion_122614_dos.csv", index=True)
+print "Complete!"

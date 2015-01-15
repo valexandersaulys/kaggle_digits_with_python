@@ -1,0 +1,96 @@
+
+
+======================== Console Output from pca(n_components=2) Didn't take long
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[   0  780    0    0    0   14  207    0   62    0]
+ [   0    0    0    0    0 1181    1    0    0    0]
+ [   0   99    0    0    0  527  224    0  155    0]
+ [   0   78    0    0    0  823   78    0  129    0]
+ [   0    0    0    0    0  143  841    0    1    0]
+ [   0  114    0    0    0  398  257    0  171    0]
+ [   0   77    0    0    0  289  601    0   75    0]
+ [   0    0    0    0    0  242  867    0    2    0]
+ [   0   62    0    0    0  617  230    0  112    0]
+ [   0    4    0    0    0  204  830    0    5    0]]
+Accuracy: 0.105810
+
+
+
+======================== Console Output from pca(n_components=99) Didn't take long
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[  0 147  98 192 125 141  78  45 115 122]
+ [ 85   2 633  49  37 144 156   0  70   6]
+ [ 18 271  59  59  92  71 344  17  32  42]
+ [ 47 134  54 342  11 204  54  75 164  23]
+ [ 60  20  56   8  76  37 133 381  83 131]
+ [ 31  80  82 227   9  10  77  95 147 182]
+ [ 80 177 239  10 243  47  50  70  51  75]
+ [ 68   8  34   5 196 206  45   7 175 367]
+ [ 57  39  89 252  25 108  17 244 127  63]
+ [ 64   4  21  71 124 130  25 303  86 215]]
+Accuracy: 0.084571
+
+
+======================== Console Output from no pca Took a few minutes
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1016    0   14    2    2   11    5    3    7    3]
+ [   0 1153   10    0    1    5    1    5    3    4]
+ [  14   19  882   14   11    9   17   19   14    6]
+ [   7    8   59  871    3   84    5   16   21   34]
+ [   2    8    5    0  917    6    7    6    3   31]
+ [  13   11   17   23   25  800    9    3   23   16]
+ [  15    3   24    1    7   34  956    1    1    0]
+ [   2    3   11    2   13    5    1 1053    1   20]
+ [   6   43   29   27   17  221    8   17  604   49]
+ [   5    4    7    9   67   24    0  126    4  797]]
+Accuracy: 0.861810
+
+
+======================== Console Output of SVM 'rbf' with a very small gamma value of 0.00001
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[   0    0    0    0    0    0    0 1063    0    0]
+ [   0  806    0    0    0    0    0  376    0    0]
+ [   0    0    0    0    0    0    0 1005    0    0]
+ [   0    0    0    0    0    0    0 1108    0    0]
+ [   0    0    0    0    0    0    0  985    0    0]
+ [   0    0    0    0    0    0    0  940    0    0]
+ [   0    0    0    0    0    0    0 1042    0    0]
+ [   0    0    0    0    0    0    0 1111    0    0]
+ [   0    0    0    0    0    0    0 1021    0    0]
+ [   0    0    0    0    0    0    0 1039    0    4]]
+Accuracy: 0.182952
+--- 1438.16347909 seconds ---
+
+
+
+
+
+

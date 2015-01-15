@@ -41,10 +41,10 @@ y_valid = validation[:,0]
 x_valid = validation[:,1:]
 print 'did necesary preparations !'
 
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.01, 0.0073, 0.001, 0.0001], 
-				'C': [1, 2, 3] }]	# the 95.5% was achieved with C=2, gamma=0.0073
+tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.0073], 
+				'C': [0.1, 1, 2, 3] }]	# the 95.5% was achieved with C=2, gamma=0.0073
                     
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2, n_jobs=4).fit(x_train, y_train)
+best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2, n_jobs=8).fit(x_train, y_train)
 
 # Give Best Estimators
 BE = best_model.best_estimator_ 

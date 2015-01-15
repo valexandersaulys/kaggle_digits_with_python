@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 
 #   Attempting the MNIST train.csv set
@@ -8,12 +8,10 @@
 #   * * * B.Eng Student at McGill University
 #   Completed with ample help from the internets
 
-import time
-start_time = time.time()
 
 #from pandas import read_csv
 from sklearn import cross_validation
-from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.datasets import fetch_mldata
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 import numpy
@@ -47,36 +45,39 @@ y_valid = validation[:,0]
 x_valid = validation[:,1:]
 print 'did necesary preparations !'
 
-mm_scal = MinMaxScaler()
-pca = PCA(n_components=99)
+#mm_scal = MinMaxScaler()
+#pca = PCA(n_components=99)
 
-x_train = mm_scal.fit_transform(x_train)
-x_train = pca.fit_transform(x_train)
-x_valid = mm_scal.fit_transform(x_valid)
-x_valid = pca.fit_transform(x_valid)
+#x_train = mm_scal.fit_transform(x_train)
+#x_train = pca.fit_transform(x_train)
+#x_valid = mm_scal.fit_transform(x_valid)
+#x_valid = pca.fit_transform(x_valid)
 
-
-
-tune_grid = [{'kernel' : ['rbf'], 'gamma': [0.0], 'C': [1]}, 
-			{'kernel' : ['poly'], 'degree' : [3], 'C' : [1]}
-			{'kernel' : ['sigmoid']}
-			{'kernel' : ['precomputed']} ]
                     
-print 'everything all set, preparing the different models'                    
-best_model = GridSearchCV( SVC(), tune_grid, cv=10, verbose=2, n_jobs=8).fit(x_train, y_train)
-
-# Give Best Estimators
-best_model.best_estimator_ 
+print 'everything all set, preparing our model!'                    
+linear_svm = LinearSVC(penalty='l2', 
+						loss='l2', 
+						dual=True,		# Prefer dual=False when n_samples > n_features.
+						tol=0.0001, 
+						C=1.0, 
+						multi_class='ovr', 
+						fit_intercept=True,
+						intercept_scaling=1, 
+						class_weight=None, 
+						verbose=0, 
+						random_state=None
+						)
+fitted_model = linear_svm.fit(x_train, y_train)
+print 'preparation done!'
 
 # Fit to some predictors
-y_pred = best_model.predict(x_valid)
+y_pred = fitted_model.predict(x_valid)
 
 # Print our output!
 cm = confusion_matrix(y_valid, y_pred)
 asm = accuracy_score(y_valid,y_pred)
 print(cm) #ConfusionMatrix
 print "Accuracy: %f" % (asm) #accuracy
-print "--- %s seconds ---" % (time.time() - start_time)
 
 """
 print "Now onto the Test Data!"
@@ -92,4 +93,4 @@ y_submit = best_model.predict(x_submit)
 print "All Predicted! Now writing to csv..."
 DataFrame(y_submit).to_csv("submittion_122414.csv", sep='\t', index=True)
 print "Complete!"
-"""
+""" 

@@ -23,6 +23,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.grid_search import GridSearchCV
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import Normalizer
 
 # To reset to use all cores
 import os
@@ -50,18 +51,15 @@ print 'did necesary preparations !'
 #mm_scal = MinMaxScaler()
 #pca = PCA(n_components=99)
 
-#x_train = mm_scal.fit_transform(x_train)
-#x_train = pca.fit_transform(x_train)
-#x_valid = mm_scal.fit_transform(x_valid)
-#x_valid = pca.fit_transform(x_valid)
-
-                    
+x_train = mm_scal.fit_transform(x_train, feature_range=(-1,1), copy=True)
+x_valid = mm_scal.fit_transform(x_valid, feature_range=(-1,1), copy=True)
+          
 print 'everything all set, preparing our model!'                    
-rbf_svm = SVC(C=1.0, 
+rbf_svm = SVC(C=1000.0, 
 				kernel='rbf', 
-				degree=3, 
-				gamma=0.00001, 
-				coef0=0.001, 
+				#degree=3, 
+				gamma=0.000000001, 
+				#coef0=0.0001, 
 				shrinking=True, 
 				probability=False, 
 				tol=0.001, 

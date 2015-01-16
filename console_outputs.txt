@@ -89,8 +89,203 @@ preparation done!
 Accuracy: 0.182952
 --- 1438.16347909 seconds ---
 
+========================= Console output of SVM 'rbf' with a gamma value of 0.000000001
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1012    0    4    3    2   18   14    2    8    0]
+ [   0 1168    3    4    0    4    1    0    2    0]
+ [  10   23  838   16   19   12   31   17   33    6]
+ [   6   25   29  927    1   48   11   12   29   20]
+ [   1   15    3    0  871    0   10    0    4   81]
+ [   9   34    4   53   17  787   20    3    6    7]
+ [  15   13   11    0    7   18  977    0    1    0]
+ [   2   26   10    2   13    2    0 1003    7   46]
+ [   6   65    5   37   13   49    7    0  811   28]
+ [   9   10    6   13   45    8    1   54    8  889]]
+Accuracy: 0.884095
+--- 649.885648012 seconds ---
 
 
+
+========================== SVM 'rbf' with gamma value of 0.000000001 and C of 0.1
+pid 5201's current affinity mask: ff
+pid 5201's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[ 931   30   17   49    0    0   11   24    0    1]
+ [   0 1182    0    0    0    0    0    0    0    0]
+ [   9  299  592   76    2    0    1   26    0    0]
+ [   1  244   19  811    0    0    3   30    0    0]
+ [   0  194   16    1  166    0   10  568    0   30]
+ [  10  382   11  420    1    0    1   90    0   25]
+ [  25  289  182   10    0    0  514   17    0    5]
+ [   1  168    5    2    0    0    0  935    0    0]
+ [   9  537   31  259    0    0    2  102   39   42]
+ [   7  195   11   19    3    0    0  801    0    7]]
+Accuracy: 0.493048
+--- 1333.52261806 seconds ---
+
+
+============================= SVM 'rbf' with gamma value of above and C of 0.01
+pid 6375's current affinity mask: ff
+pid 6375's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[   0 1063    0    0    0    0    0    0    0    0]
+ [   0 1182    0    0    0    0    0    0    0    0]
+ [   0 1005    0    0    0    0    0    0    0    0]
+ [   0 1108    0    0    0    0    0    0    0    0]
+ [   0  985    0    0    0    0    0    0    0    0]
+ [   0  940    0    0    0    0    0    0    0    0]
+ [   0 1042    0    0    0    0    0    0    0    0]
+ [   0 1111    0    0    0    0    0    0    0    0]
+ [   0 1021    0    0    0    0    0    0    0    0]
+ [   0 1043    0    0    0    0    0    0    0    0]]
+Accuracy: 0.112571
+--- 1372.36158109 seconds ---
+
+
+============================= SVM 'rbf' with gamma value of above and C of 10.0
+pid 7197's current affinity mask: ff
+pid 7197's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1036    0    2    0    2    5    9    1    8    0]
+ [   0 1164    4    4    2    3    1    0    4    0]
+ [   9    6  904   10   14    9   21    7   21    4]
+ [   4   14   24  980    2   37    6   11   23    7]
+ [   2    7    6    0  924    1    6    0    2   37]
+ [   8   16    4   34   12  834   15    2    9    6]
+ [  10    5   10    0    4   10 1001    0    2    0]
+ [   3    9   13    3    9    1    0 1030    5   38]
+ [   3   30    8   14    9   34    8    1  906    8]
+ [   8    6    5   16   38    8    2   36    5  919]]
+Accuracy: 0.923619
+--- 283.244495153 seconds ---
+
+
+============================ SVM 'rbf' with gamma value of 0.000000001 and C of 100.0
+pid 7792's current affinity mask: ff
+pid 7792's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1042    0    3    4    1    2    5    0    6    0]
+ [   0 1164    2    5    1    2    1    2    5    0]
+ [   7    2  940    9    9    7   14    3   11    3]
+ [   2   10   21 1011    3   30    4   10   12    5]
+ [   3    6    6    0  941    3    3    1    1   21]
+ [   7   11    8   28    8  843   16    1   12    6]
+ [   9    2    8    0    2   10 1009    0    2    0]
+ [   2    4   11    6    7    0    0 1052    4   25]
+ [   3   19    8   12    6   27    4    2  933    7]
+ [   7    5    7   12   30    6    2   26    5  943]]
+Accuracy: 0.940762
+--- 144.837965965 seconds ---
+
+
+============================= SVM 'rbf' with gamma value of 0.000000001 and C of 1000.0
+pid 8277's current affinity mask: ff
+pid 8277's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1042    0    2    0    1    4    7    0    6    1]
+ [   0 1166    3    3    1    2    1    2    3    1]
+ [   8    2  944    9    9    7   10    4   10    2]
+ [   3    3   18 1033    1   22    2    7   11    8]
+ [   1    7    2    0  949    0    5    1    2   18]
+ [   8    6    9   30    7  852   12    0   11    5]
+ [   8    1    8    0    2    8 1013    0    2    0]
+ [   4    1    9    4    5    0    0 1064    3   21]
+ [   4   18    8   14    4   25    4    1  939    4]
+ [   5    6    8   10   30    6    0   33    3  942]]
+Accuracy: 0.947048
+--- 111.04429698 seconds ---
+
+============================= SVM 'rbf' with other degree values, both 4 and 5 don't change anything
+pid 8542's current affinity mask: ff
+pid 8542's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1042    0    2    0    1    4    7    0    6    1]
+ [   0 1166    3    3    1    2    1    2    3    1]
+ [   8    2  944    9    9    7   10    4   10    2]
+ [   3    3   18 1033    1   22    2    7   11    8]
+ [   1    7    2    0  949    0    5    1    2   18]
+ [   8    6    9   30    7  852   12    0   11    5]
+ [   8    1    8    0    2    8 1013    0    2    0]
+ [   4    1    9    4    5    0    0 1064    3   21]
+ [   4   18    8   14    4   25    4    1  939    4]
+ [   5    6    8   10   30    6    0   33    3  942]]
+Accuracy: 0.947048
+--- 109.680036068 seconds ---
+
+pid 8662's current affinity mask: ff
+pid 8662's new affinity mask: ff
+starting...
+read data !
+partitioned data !
+did necesary preparations !
+everything all set, preparing our model!
+preparation done!
+/usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[[1042    0    2    0    1    4    7    0    6    1]
+ [   0 1166    3    3    1    2    1    2    3    1]
+ [   8    2  944    9    9    7   10    4   10    2]
+ [   3    3   18 1033    1   22    2    7   11    8]
+ [   1    7    2    0  949    0    5    1    2   18]
+ [   8    6    9   30    7  852   12    0   11    5]
+ [   8    1    8    0    2    8 1013    0    2    0]
+ [   4    1    9    4    5    0    0 1064    3   21]
+ [   4   18    8   14    4   25    4    1  939    4]
+ [   5    6    8   10   30    6    0   33    3  942]]
+Accuracy: 0.947048
+--- 109.262249947 seconds ---
+
+
+================================
 
 
 
